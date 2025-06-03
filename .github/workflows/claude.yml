@@ -1,7 +1,7 @@
 name: Claude Assistant
 
 permissions:
-  contents: read        # 既存の read 権限
+  contents: write
   issues: write         # コメントを書きたいので write
   pull-requests: write  # PR にも書くなら
 
@@ -29,4 +29,4 @@ jobs:
           # Optional: add custom environment variables (YAML format)
           claude_env: |
             ANTHROPIC_BASE_URL: ${{ secrets.ANTHROPIC_BASE_URL }}
-            ANTHROPIC_AUTH_TOKEN: ${ secrets.ANTHROPIC_AUTH_TOKEN }
+            ANTHROPIC_AUTH_TOKEN: ${{ secrets.ANTHROPIC_AUTH_TOKEN }}
