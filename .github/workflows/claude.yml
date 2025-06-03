@@ -1,0 +1,26 @@
+name: Claude Assistant
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+  issues:
+    types: [opened, assigned]
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  claude-response:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: anthropics/claude-code-action@main
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Optional: add custom trigger phrase (default: @claude)
+          # trigger_phrase: "/claude"
+          # Optional: add assignee trigger for issues
+          # assignee_trigger: "claude"
+          # Optional: add custom environment variables (YAML format)
+          claude_env: |
+            ANTHROPIC_BASE_URL: ${{ secrets.ANTHROPIC_BASE_URL }}
+            ANTHROPIC_AUTH_TOKEN: ${ secrets.ANTHROPIC_AUTH_TOKEN }
