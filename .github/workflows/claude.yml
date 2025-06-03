@@ -1,4 +1,10 @@
 name: Claude Assistant
+
+permissions:
+  contents: read        # 既存の read 権限
+  issues: write         # コメントを書きたいので write
+  pull-requests: write  # PR にも書くなら
+
 on:
   issue_comment:
     types: [created]
